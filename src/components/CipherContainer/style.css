@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.row {
+    display: flex;
+}
+
+.CipherBox {
+    height: 350px;
+    margin: 20px;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+}
+
+.CipherBox:hover {
+    cursor: pointer;
+}
+
+textarea {
+    height: 200px;
+    width: 90vh;
+}
+
+.cipherName {
+    font-size: 3.5rem;
+    color: #E3E36A;
+    font-weight: bold;
+
+}
