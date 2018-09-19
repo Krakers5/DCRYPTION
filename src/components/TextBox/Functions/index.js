@@ -2,56 +2,56 @@ import React, {Component} from 'react';
 
 class Functions extends Component {
     static rot13() {
-        let text_area = document.getElementById('ciph');
-        let output = document.querySelector('.result');
+        const text_area = document.getElementById('ciph');
+        const output = document.querySelector('.result');
 
 
-        let val = text_area.value;
+        let textValue = text_area.value;
         let arr = [];
-        for (let i = 0; i < val.length; i++) {
-            if ((val.charCodeAt(i)>=97 && val.charCodeAt(i) <=109) ||
-                (val.charCodeAt(i)>=65 && val.charCodeAt(i) <=77)) {
-                arr.push(val.charCodeAt(i) + 13);
-            } else if ((val.charCodeAt(i) >=110 && val.charCodeAt(i) <=122) ||
-                (val.charCodeAt(i)>=78 && val.charCodeAt(i) <=90)) {
-                arr.push(val.charCodeAt(i) - 13);
+        for (let i = 0; i < textValue.length; i++) {
+            if ((textValue.charCodeAt(i)>=97 && textValue.charCodeAt(i) <=109) ||
+                (textValue.charCodeAt(i)>=65 && textValue.charCodeAt(i) <=77)) {
+                arr.push(textValue.charCodeAt(i) + 13);
+            } else if ((textValue.charCodeAt(i) >=110 && textValue.charCodeAt(i) <=122) ||
+                (textValue.charCodeAt(i)>=78 && textValue.charCodeAt(i) <=90)) {
+                arr.push(textValue.charCodeAt(i) - 13);
             } else {
-                arr.push(val.charCodeAt(i));
+                arr.push(textValue.charCodeAt(i));
             }
         }
 
-        let result = String.fromCharCode(...arr);
+        const result = String.fromCharCode(...arr);
         output.innerText = result;
     }
 
 
     static numbersToLettersEn() {
-        let text_area = document.getElementById('ciph');
-        let output = document.querySelector('.result');
-        let val = text_area.value;
+        const text_area = document.getElementById('ciph');
+        const output = document.querySelector('.result');
+        let textValue = text_area.value;
         let arr = [];
 
-        for (let i=0; i < val.length; i++) {
-            if (val.charCodeAt(i)>=65 && val.charCodeAt(i) <=90) {
-                arr.push(val.charCodeAt(i) - 54);
-            } else if (val.charCodeAt(i)>=97 && val.charCodeAt(i) <=122) {
-                arr.push(val.charCodeAt(i) - 86);
-            } else if (val.charCodeAt(i) === 32) {
+        for (let i=0; i < textValue.length; i++) {
+            if (textValue.charCodeAt(i)>=65 && textValue.charCodeAt(i) <=90) {
+                arr.push(textValue.charCodeAt(i) - 54);
+            } else if (textValue.charCodeAt(i)>=97 && textValue.charCodeAt(i) <=122) {
+                arr.push(textValue.charCodeAt(i) - 86);
+            } else if (textValue.charCodeAt(i) === 32) {
                 arr.push(0);
             } else {
-                arr.push(val.charCodeAt(i))
+                arr.push(textValue.charCodeAt(i))
             }
         }
 
-        let result = arr.join(' ');
+        const result = arr.join(' ');
         output.innerText = result;
     }
 
     static numbersToLetterDe() {
-        let text_area = document.getElementById('ciph');
-        let output = document.querySelector('.result');
-        let val = text_area.value;
-        let arr = val.split(' ');
+        const text_area = document.getElementById('ciph');
+        const output = document.querySelector('.result');
+        let textValue = text_area.value;
+        let arr = textValue.split(' ');
         let new_arr =[];
         for (let i=0; i < arr.length; i++) {
             if (arr[i]==='0')  {
@@ -67,9 +67,9 @@ class Functions extends Component {
 
 
     static BaconEn() {
-        let text_area = document.getElementById('ciph');
-        let output = document.querySelector('.result');
-        let val = text_area.value.toLowerCase();
+        const text_area = document.getElementById('ciph');
+        const output = document.querySelector('.result');
+        let textValue = text_area.value.toLowerCase();
         let arr = [];
 
         let key = {
@@ -84,17 +84,17 @@ class Functions extends Component {
 
 
 
-        for (let i = 0; i < val.length; i++) {
-            arr.push(key[val[i]])
+        for (let i = 0; i < textValue.length; i++) {
+            arr.push(key[textValue[i]])
         }
         output.innerText = arr.join('');
 
     }
 
     static BaconDe() {
-        let text_area = document.getElementById('ciph');
-        let output = document.querySelector('.result');
-        let val = text_area.value;
+        const text_area = document.getElementById('ciph');
+        const output = document.querySelector('.result');
+        let textValue = text_area.value;
         let arr = [];
 
         let key = {
@@ -107,7 +107,7 @@ class Functions extends Component {
 
         };
 
-        arr = val.match(/.{1,5}/g);
+        arr = textValue.match(/.{1,5}/g);
 
         function getKeyByValue(object, value) {
             return Object.keys(object).find(key => object[key] === value);
@@ -119,9 +119,9 @@ class Functions extends Component {
     }
 
     static Kamasutra() {
-        let text_area = document.getElementById('ciph');
-        let output = document.querySelector('.result');
-        let val = text_area.value.toLowerCase();
+        const text_area = document.getElementById('ciph');
+        const output = document.querySelector('.result');
+        let textValue = text_area.value.toLowerCase();
         let arr = [];
         let key = document.getElementById('yourKey');
         let key_value = key.value.toLowerCase();
@@ -132,30 +132,29 @@ class Functions extends Component {
 
         let new_arr =[];
 
-        if (val === '69') {
-            // alert("Ty świntuchu!");
+        if (textValue === '69') {
             let person = prompt("Podaj swoje imię, świntuchu");
             output.innerText = "Byś się wstydził, " + person;
         } else {
 
-        for (let i=0; i < val.length; i++) {
-            if (val.charCodeAt(i) === 32) {
+        for (let i=0; i < textValue.length; i++) {
+            if (textValue.charCodeAt(i) === 32) {
                 new_arr.push(String.fromCharCode(32))
             }
-            else if (arr.indexOf(val[i]) < 13) {
-                new_arr.push(arr[arr.indexOf(val[i]) + 13])
+            else if (arr.indexOf(textValue[i]) < 13) {
+                new_arr.push(arr[arr.indexOf(textValue[i]) + 13])
             }
             else {
-                new_arr.push(arr[arr.indexOf(val[i]) - 13])
+                new_arr.push(arr[arr.indexOf(textValue[i]) - 13])
             }
         } output.innerText = new_arr.join("");}
 
     }
 
     static TomatoEn() {
-        let text_area = document.getElementById('ciph');
-        let output = document.querySelector('.result');
-        let val = text_area.value;
+        const text_area = document.getElementById('ciph');
+        const output = document.querySelector('.result');
+        let textValue = text_area.value;
         let arr = [];
         let key = document.getElementById('yourKey');
         let key_value = key.value;
@@ -168,14 +167,14 @@ class Functions extends Component {
         let counter = 0;
 
 
-        for (let i=0; i < val.length; i++) {
+        for (let i=0; i < textValue.length; i++) {
             if (counter === 4) {
                 counter = 0
             }
-            if (val.charCodeAt(i) < 114) {
-                new_arr.push(Number(val.charCodeAt(i)) + Number(arr[counter]))
+            if (textValue.charCodeAt(i) < 114) {
+                new_arr.push(Number(textValue.charCodeAt(i)) + Number(arr[counter]))
             } else {
-                new_arr.push(val.charCodeAt(i) - 65)
+                new_arr.push(textValue.charCodeAt(i) - 65)
             }
             counter ++;
         }
@@ -183,9 +182,9 @@ class Functions extends Component {
     }
 
     static TomatoDe() {
-        let text_area = document.getElementById('ciph');
-        let output = document.querySelector('.result');
-        let val = text_area.value;
+        const text_area = document.getElementById('ciph');
+        const output = document.querySelector('.result');
+        let textValue = text_area.value;
         let arr = [];
         let key = document.getElementById('yourKey');
         let key_value = key.value;
@@ -196,14 +195,14 @@ class Functions extends Component {
             arr.push(key_value[i]);
         }
 
-        for (let i=0; i < val.length; i++) {
+        for (let i=0; i < textValue.length; i++) {
             if (counter === 4) {
                 counter = 0
             }
-            if (val.charCodeAt(i) > 48 && val.charCodeAt(i) < 58) {
-                new_arr.push(val.charCodeAt(i) + 65)
+            if (textValue.charCodeAt(i) > 48 && textValue.charCodeAt(i) < 58) {
+                new_arr.push(textValue.charCodeAt(i) + 65)
             } else {
-                new_arr.push(val.charCodeAt(i) - Number(arr[counter]))
+                new_arr.push(textValue.charCodeAt(i) - Number(arr[counter]))
             }
             counter++;
         }
@@ -212,9 +211,9 @@ class Functions extends Component {
     }
 
     static gadery() {
-        let text_area = document.getElementById('ciph');
-        let output = document.querySelector('.result');
-        let val = text_area.value.toLowerCase();
+        const text_area = document.getElementById('ciph');
+        const output = document.querySelector('.result');
+        let textValue = text_area.value.toLowerCase();
 
 
         let key = {
@@ -223,7 +222,7 @@ class Functions extends Component {
         };
 
 
-        let replaced = val.replace(/[gaderypoluki]/gi, c => key[c] || key[c.toLowerCase()].toUpperCase());
+        let replaced = textValue.replace(/[gaderypoluki]/gi, c => key[c] || key[c.toLowerCase()].toUpperCase());
 
 
         output.innerHTML = replaced;

@@ -8,69 +8,68 @@ class TextBox extends Component {
     cipherDispatcher = () => {
         const radio_encrypt = document.getElementById('encrypt');
         const radio_decrypt = document.getElementById('decrypt');
-        if (this.props.t_name === 'ROT13') {
+        if (this.props.cipherName === 'ROT13') {
             return Functions.rot13()
-        } else if (this.props.t_name === 'Letters to numbers') {
+        } else if (this.props.cipherName === 'Letters to numbers') {
             if (radio_encrypt.checked) {
                 return Functions.numbersToLettersEn()
             } else if (radio_decrypt.checked) {
                 return Functions.numbersToLetterDe()
             }
-        } else if (this.props.t_name === 'Bacon') {
+        } else if (this.props.cipherName === 'Bacon') {
             if (radio_encrypt.checked) {
                 return Functions.BaconEn()
             }
             else if (radio_decrypt.checked) {
                 return Functions.BaconDe()
             }
-        } else if (this.props.t_name === 'Kamasutra') {
+        } else if (this.props.cipherName === 'Kamasutra') {
             return Functions.Kamasutra();
-        } else if (this.props.t_name === 'Tomato') {
+        } else if (this.props.cipherName === 'Tomato') {
             if (radio_encrypt.checked) {
                 return Functions.TomatoEn();
             } else if (radio_decrypt.checked) {
                 return Functions.TomatoDe();
             }
-        } else if (this.props.t_name === 'GA-DE-RY-PO-LU-KI') {
+        } else if (this.props.cipherName === 'GA-DE-RY-PO-LU-KI') {
                 return Functions.gadery();
         }
     };
 
     checker = () => {
-        if (this.props.t_name === 'Kamasutra' || this.props.t_name === 'Tomato') {
-            let labell = document.createElement('label');
-            labell.setAttribute('for', 'yourKey');
-            labell.innerText = 'Cipher key ';
-            let iinput = document.createElement('input');
-            iinput.setAttribute("id", "yourKey");
-            let formm = document.querySelector('form');
-            formm.appendChild(labell);
-            formm.appendChild(iinput);
+        if (this.props.cipherName === 'Kamasutra' || this.props.cipherName === 'Tomato') {
+            const label = document.createElement('label');
+            label.setAttribute('for', 'yourKey');
+            label.innerText = 'Cipher key ';
+            const input = document.createElement('input');
+            input.setAttribute("id", "yourKey");
+            const form = document.querySelector('form');
+            form.appendChild(label);
+            form.appendChild(input);
         }
     };
 
     randomKey = (e) => {
         e.preventDefault();
-        let iinput = document.querySelector('#yourKey');
-        if (this.props.t_name === 'Kamasutra') {
+        if (this.props.cipherName === 'Kamasutra') {
             let text = "";
             let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            let iinput = document.querySelector('#yourKey');
+            let input = document.querySelector('#yourKey');
             for (let i = 0; i < 26; i++) {
                 let letter = possible.charAt(Math.floor(Math.random() * possible.length));
                 text = text + letter;
                 possible = possible.replace(letter, '')
             }
-            iinput.value = text;
+            input.value = text;
         }
-        else if (this.props.t_name === 'Tomato') {
+        else if (this.props.cipherName === 'Tomato') {
                 let numbers = "";
-                let possible_numbers = "123456789";
-                let iinput = document.querySelector('#yourKey');
+                let possibleNumbers = "123456789";
+                let input = document.querySelector('#yourKey');
                 for (let i = 0; i < 4; i++) {
-                    numbers = numbers + possible_numbers.charAt(Math.floor(Math.random() * possible_numbers.length));
+                    numbers = numbers + possibleNumbers.charAt(Math.floor(Math.random() * possibleNumbers.length));
                 }
-                iinput.value = numbers;
+                input.value = numbers;
             }
 
     };
@@ -82,10 +81,10 @@ class TextBox extends Component {
     render() {
         return (
             <div>
-                <h2>{this.props.t_name}</h2>
+                <h2>{this.props.cipherName}</h2>
                 <textarea id='ciph'>
                 </textarea>
-                {this.props.t_name === 'Kamasutra' || this.props.t_name === 'Tomato' ?
+                {this.props.cipherName === 'Kamasutra' || this.props.cipherName === 'Tomato' ?
                 <form>
                         <label htmlFor="encrypt">Encrypt</label>
                         <input type = "radio" name="cipher" id="encrypt" defaultChecked="checked"/>

@@ -30,7 +30,7 @@ class App extends Component {
         </header>
         <main>
 
-            {this.state.isTextBox ? <TextBox t_name = {this.state.textBox_name}/> :
+            {this.state.isTextBox ? <TextBox cipherName = {this.state.textBox_name}/> :
             <Container clicker={this.clicker}/>}
 
         </main>
